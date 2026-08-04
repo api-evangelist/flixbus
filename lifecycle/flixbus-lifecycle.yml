@@ -1,0 +1,49 @@
+generated: '2026-08-04'
+method: searched
+source: >-
+  live probes of global.flixbus.com, developer.api.flixbus.com and gtfs.gis.flix.tech
+  plus the Flix Developer Portal route map
+versioning:
+  scheme: unknown
+  current: null
+  docs: null
+  note: >-
+    The Flix Developer Portal exposes per-API version and changelog routes
+    (/apis/:id, /apis/:id/reference, /apis/:id/changelog, /apis/:id/getting-started),
+    so Flix does maintain versioned API documentation — but the whole portal is behind
+    a Microsoft Entra ID sign-in, so the versioning scheme and current version cannot
+    be read anonymously.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  note: >-
+    No public deprecation or sunset policy was found. Per-API changelogs exist inside
+    the gated developer portal; nothing is published anonymously.
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  probed:
+  - {url: 'https://status.flixbus.com/', result: dns-nxdomain}
+  - {url: 'https://global.flixbus.com/service/status', http_status: 404}
+  note: No public API or service status page was found.
+data_feeds:
+  gtfs:
+    refresh: >-
+      Regenerated regularly; all three regional archives carried a Last-Modified of
+      2026-08-02 when probed on 2026-08-04.
+    validity_window:
+      feed_start_date: '20260802'
+      feed_end_date: '20270202'
+      source: feed_info.txt inside gtfs_generic_eu.zip
+    publisher: FlixMobility Tech GmbH
+    license: ODbL-1.0
+deprecated_operations: []
+x-evidence:
+  fetched: '2026-08-04'
+  checks:
+  - {url: 'https://developer.api.flixbus.com/', http_status: 200, note: 'SPA shell; Entra ID gated'}
+  - {url: 'https://gtfs.gis.flix.tech/gtfs_generic_eu.zip', http_status: 200, last_modified: 'Sun, 02 Aug 2026 21:33:30 GMT'}
+  - {url: 'https://gtfs.gis.flix.tech/gtfs_generic_us.zip', http_status: 200, last_modified: 'Sun, 02 Aug 2026 21:30:58 GMT'}
+  - {url: 'https://gtfs.gis.flix.tech/gtfs_generic_gb.zip', http_status: 200, last_modified: 'Sun, 02 Aug 2026 21:30:47 GMT'}

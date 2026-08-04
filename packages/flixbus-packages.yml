@@ -1,0 +1,64 @@
+generated: '2026-08-04'
+method: searched
+source: >-
+  npm registry search, PyPI, Packagist, RubyGems and the flix-tech GitHub organization
+summary:
+  official_packages: 0
+  community_packages: 5
+  note: >-
+    Flix publishes NO first-party client library on any public registry. The flix-tech
+    GitHub organization (156 public repos) is infrastructure and forks — Kafka, Avro,
+    Kubernetes, Terraform, iOS tooling — with no Flix API SDK. The former
+    flix-tech/public-api-java-examples repository, which carried FlixMobility's Java
+    example code for the Public API, now returns 404. Partner SDK material, if any, is
+    behind the Entra ID login on developer.api.flixbus.com; the portal is documented as
+    distributing example Postman collections rather than packaged SDKs.
+packages: []
+community_packages:
+- language: javascript
+  registry: npm
+  name: flix
+  url: https://www.npmjs.com/package/flix
+  install: npm install flix
+  official: false
+  author: juliuste
+  description: JavaScript client for the FlixBus (Meinfernbus) / FlixTrain API.
+- language: javascript
+  registry: npm
+  name: search-flix-locations
+  url: https://www.npmjs.com/package/search-flix-locations
+  install: npm install search-flix-locations
+  official: false
+  author: derhuerst
+  description: Search for Flix/FlixBus/MeinFernbus cities and stations.
+- language: javascript
+  registry: npm
+  name: flixbus
+  url: https://www.npmjs.com/package/flixbus
+  install: npm install flixbus
+  official: false
+  author: tobiasoberrauch
+  description: Catch flixbus data.
+- language: javascript
+  registry: npm
+  name: flixbus-api
+  url: https://www.npmjs.com/package/flixbus-api
+  install: npm install flixbus-api
+  official: false
+  author: tobiasoberrauch
+  description: A service that provides flixbus rides.
+- language: python
+  registry: pypi
+  name: flixbus
+  url: https://pypi.org/project/flixbus/
+  install: pip install flixbus
+  official: false
+  author: Jeroen van Bennekum
+  description: A Flixbus API package with easy to use high-level functions.
+x-evidence:
+  fetched: '2026-08-04'
+  checks:
+  - {registry: npm, query: flixbus, first_party_hits: 0}
+  - {registry: pypi, package: flixbus, http_status: 200, first_party: false}
+  - {registry: packagist, query: flixbus, results: 0}
+  - {url: 'https://github.com/flix-tech/public-api-java-examples', http_status: 404}

@@ -1,0 +1,112 @@
+generated: '2026-08-04'
+method: searched
+source: live probes of every apis.yml host and the Flix web/docs hosts
+notes: >-
+  developer.api.flixbus.com is a client-rendered single-page application whose server
+  answers HTTP 200 with the same 4,684-byte HTML shell for every path, including every
+  /.well-known/* path. Those 200s are NOT documents and are recorded here as
+  spa_catch_all so a later run does not mistake them for hits.
+hosts:
+- host: https://global.flixbus.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/plain
+    file: flixbus-security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://global.api.flixbus.com
+  note: Flix API gateway; anonymous root returns 403, /api/* returns 401 Unauthorized
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://help.flixbus.com
+  note: >-
+    Flix help centre on a Salesforce Experience Cloud tenant. The OIDC discovery document
+    is the Salesforce identity provider for the help centre itself (issuer
+    https://help.flixbus.com, Salesforce scope names such as cdp_api / pardot_api /
+    lightning) — it is NOT the authorization server for the Flix partner API.
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: flixbus-openid-configuration.json
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+  - path: /.well-known/oauth-protected-resource
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/agent-card.json
+    status: 401
+  - path: /.well-known/agent.json
+    status: 401
+- host: https://gtfs.gis.flix.tech
+  note: >-
+    S3-backed GTFS distribution host. Object keys resolve (gtfs_generic_eu.zip,
+    gtfs_generic_us.zip, gtfs_generic_gb.zip); every other path including /.well-known/*
+    returns 403 AccessDenied with an application/xml body.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403
+- host: https://developer.api.flixbus.com
+  spa_catch_all: true
+  note: >-
+    Every path returns 200 text/html with the identical 4,684-byte React shell. No
+    /.well-known document is actually served here; do not treat these 200s as hits.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    verdict: spa-shell-html-not-a-document
+  - path: /.well-known/agent-card.json
+    status: 200
+    verdict: spa-shell-html-not-a-document
+  - path: /.well-known/agent.json
+    status: 200
+    verdict: spa-shell-html-not-a-document
+  - path: /.well-known/openid-configuration
+    status: 200
+    verdict: spa-shell-html-not-a-document
+  - path: /.well-known/api-catalog
+    status: 200
+    verdict: spa-shell-html-not-a-document
+x-evidence:
+  fetched: '2026-08-04'
+  agent_card_found: false
+  security_txt_found: true

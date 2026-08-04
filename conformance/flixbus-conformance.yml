@@ -1,0 +1,75 @@
+generated: '2026-08-04'
+method: searched
+source: >-
+  Direct download and inspection of the Flix GTFS archives, the Flix Developer Portal
+  bundle configuration, and the Flix security.txt
+standards:
+- id: gtfs-schedule
+  name: General Transit Feed Specification (Schedule)
+  conforms: true
+  evidence: >-
+    gtfs_generic_eu.zip downloaded 2026-08-04 (HTTP 200, 32,544,155 bytes) contains the
+    GTFS required and optional files agency.txt, routes.txt, trips.txt, stops.txt,
+    stop_times.txt, calendar.txt, calendar_dates.txt, transfers.txt, shapes.txt and
+    feed_info.txt. feed_info.txt names FlixMobility Tech GmbH as publisher. Equivalent
+    archives are served for the United States and Great Britain.
+  artifacts:
+  - https://gtfs.gis.flix.tech/gtfs_generic_eu.zip
+  - https://gtfs.gis.flix.tech/gtfs_generic_us.zip
+  - https://gtfs.gis.flix.tech/gtfs_generic_gb.zip
+- id: gtfs-realtime
+  name: GTFS Realtime
+  conforms: false
+  evidence: No GTFS-Realtime (vehicle positions, trip updates, service alerts) feed was found.
+- id: rfc9116-security-txt
+  name: RFC 9116 security.txt
+  conforms: true
+  evidence: >-
+    https://global.flixbus.com/.well-known/security.txt returns HTTP 200 text/plain with
+    Contact, Policy, Encryption, Preferred-Languages, Canonical and a non-expired Expires
+    field (2027-05-04).
+- id: oidc
+  name: OpenID Connect Discovery
+  conforms: partial
+  evidence: >-
+    https://help.flixbus.com/.well-known/openid-configuration returns a valid OIDC
+    discovery document (issuer https://help.flixbus.com). This is the Salesforce
+    Experience Cloud identity provider behind the Flix help centre, not the Flix
+    partner API authorization server; no OIDC discovery is published on the API host.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: true
+  evidence: >-
+    The Flix Developer Portal authenticates with Microsoft Entra ID (Azure AD) using an
+    OAuth 2.0 bearer token — the portal bundle configures REACT_APP_AZURE_TENANT_ID,
+    REACT_APP_AZURE_CLIENT_ID and the API gateway scope
+    api://5cd49e44-.../user_impersonation, and attaches Authorization: Bearer to every
+    call to https://global.api.flixbus.com/api. This covers portal access; the partner
+    API's own scheme is not published anonymously.
+- id: openapi
+  name: OpenAPI Specification
+  conforms: unknown
+  evidence: >-
+    Flix has publicly stated (Postman customer story) that it maintains OpenAPI
+    definitions and that partners can download example Postman collections from the
+    developer portal, and the portal ships a Redocly renderer — but no OpenAPI document
+    is reachable anonymously. Probes of /openapi.json, /openapi.yaml, /swagger.json,
+    /api-docs, /docs, /v3/api-docs and /api/openapi.json against
+    global.api.flixbus.com and developer.api.flixbus.com all returned 401/404 or the
+    SPA HTML shell.
+- id: rfc9457-problem-details
+  name: RFC 9457 Problem Details
+  conforms: unknown
+  evidence: No machine-readable spec or public error reference is available to assess.
+- id: asyncapi
+  name: AsyncAPI
+  conforms: false
+  evidence: No public event, streaming or webhook surface was found for Flix.
+compliance_program:
+  published: false
+  note: >-
+    No trust centre, and no named certification (SOC 2, ISO 27001, PCI DSS, GDPR
+    attestation) is published on the Flix public surface. trust.flixbus.com,
+    security.flixbus.com, /trust and /compliance were all probed and missed.
+x-evidence:
+  fetched: '2026-08-04'

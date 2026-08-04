@@ -1,0 +1,53 @@
+generated: '2026-08-04'
+method: searched
+source: >-
+  https://developer.api.flixbus.com/static/js/main.66632736.js (portal runtime config)
+  and live anonymous probes of https://global.api.flixbus.com
+docs: https://developer.api.flixbus.com/
+summary:
+  types: [oauth2]
+  api_key_in: []
+  oauth2_flows: [authorizationCode]
+  spec_derived: false
+  note: >-
+    No OpenAPI is publicly reachable, so this profile is observed rather than derived
+    from securitySchemes. It describes the authentication the Flix Developer Portal
+    itself performs; the partner API's issued credentials are documented only behind
+    that login.
+schemes:
+- name: EntraID
+  type: oauth2
+  provider: Microsoft Entra ID (Azure AD)
+  flows:
+  - flow: authorizationCode
+    tenant_id: d8d0ad3e-8bcf-48e9-9bb2-aee17c6c4fd5
+    client_id: 29f56109-061f-4497-adc6-a341b8da145c
+    scope: api://5cd49e44-b725-40d7-949e-cfcd481d5201/user_impersonation
+    library: MSAL (@azure/msal-browser)
+  applies_to: https://global.api.flixbus.com/api
+  presentation: 'Authorization: Bearer <access_token>'
+  sources: ['https://developer.api.flixbus.com/static/js/main.66632736.js']
+gated:
+  portal: >-
+    developer.api.flixbus.com requires a Microsoft Entra ID sign-in before any API
+    reference, getting-started guide, changelog or Postman collection is visible.
+  gateway_observations:
+  - {url: 'https://global.api.flixbus.com/', http_status: 403}
+  - {url: 'https://global.api.flixbus.com/api/apis', http_status: 401, body: '{"message":"Unauthorized"}'}
+  - {url: 'https://global.api.flixbus.com/search/service/v4/search', http_status: 400}
+onboarding:
+  how_to_get_credentials: >-
+    Distribution / dynamic-integration access (API, GTFS, white label, metasearch) is
+    requested by emailing online-distribution@flixbus.com with company details, domains
+    and monthly visitor numbers. Static affiliate integration runs through AWIN.
+  contact: online-distribution@flixbus.com
+  url: https://global.flixbus.com/company/partners/affiliate-partners
+unauthenticated_surfaces:
+- name: GTFS Schedule feeds
+  auth: none
+  urls:
+  - https://gtfs.gis.flix.tech/gtfs_generic_eu.zip
+  - https://gtfs.gis.flix.tech/gtfs_generic_us.zip
+  - https://gtfs.gis.flix.tech/gtfs_generic_gb.zip
+x-evidence:
+  fetched: '2026-08-04'

@@ -1,23 +1,131 @@
 aid: flixbus
 name: FlixBus
-description: 'FlixBus is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'FlixBus is the long-distance coach brand of Flix SE (formerly FlixMobility),
+  a Munich-headquartered mobility provider that also operates FlixTrain in Europe and
+  Greyhound in North America. Flix runs an asset-light model: it owns the brand, network
+  planning, pricing, distribution and technology while regional bus partners operate
+  the vehicles. Its technology surface is split in two. A partner-facing Flix API is
+  published through the Flix Developer Portal at developer.api.flixbus.com — a Redocly-based
+  catalogue of API references, getting-started guides, changelogs and downloadable Postman
+  collections — but the portal is gated behind Microsoft Entra ID (Azure AD) sign-in and
+  the underlying gateway at global.api.flixbus.com rejects anonymous requests, so no
+  machine-readable OpenAPI is reachable without a distribution-partner agreement (requested
+  via online-distribution@flixbus.com). Publicly and anonymously, Flix does publish schedule
+  data as first-party GTFS Schedule feeds for Europe, the United States and Great Britain
+  from gtfs.gis.flix.tech, refreshed regularly and licensed ODbL-1.0 through national
+  open-data portals.'
 url: https://raw.githubusercontent.com/api-evangelist/flixbus/refs/heads/main/apis.yml
+image: https://cdn-cf.cms.flixbus.com/drupal-assets/ogimage/flixbus.png
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-04'
 modified: '2026-08-04'
+x-enrichment:
+  date: '2026-08-04'
+  status: enriched
+  artifacts_added: 10
+  pass: local-v1
 tags:
 - Company
-apis: []
+- Transportation
+- Travel
+- Mobility
+- Bus
+- Rail
+- Ticketing
+- GTFS
+- Open Data
+- Distribution
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: Flix API
+  description: 'The partner-facing Flix API, published through the Flix Developer Portal.
+    Documentation covers API references, getting-started guides, changelogs and example
+    Postman collections for Flix distribution and affiliate partners (search, availability,
+    booking and ticketing over JSON/REST). Access is gated: the developer portal requires
+    a Microsoft Entra ID sign-in and the API gateway at global.api.flixbus.com returns
+    403/401 to anonymous callers, so credentials are issued only under a distribution-partner
+    agreement.'
+  humanURL: https://developer.api.flixbus.com/
+  baseURL: https://global.api.flixbus.com
+  tags:
+  - Booking
+  - Ticketing
+  - Travel
+  - Distribution
+  properties:
+  - type: DeveloperPortal
+    url: https://developer.api.flixbus.com/
+  - type: Documentation
+    url: https://developer.api.flixbus.com/
+  - type: SignUp
+    url: https://global.flixbus.com/company/partners/affiliate-partners
+- name: Flix GTFS Schedule Feeds
+  description: 'First-party GTFS Schedule feeds published by FlixMobility Tech GmbH covering
+    the FlixBus and FlixTrain networks. Three anonymous, unauthenticated regional archives
+    are served from gtfs.gis.flix.tech — Europe (gtfs_generic_eu.zip), the United States
+    (gtfs_generic_us.zip) and Great Britain (gtfs_generic_gb.zip) — each a standard GTFS
+    bundle with agency, routes, trips, stops, stop_times, calendar, transfers and shapes.
+    The feeds are aggregated by Transitland, the Mobility Database and transport.data.gouv.fr
+    under an ODbL-1.0 license.'
+  humanURL: https://www.transit.land/feeds/f-u-flixbus
+  baseURL: https://gtfs.gis.flix.tech
+  tags:
+  - GTFS
+  - Open Data
+  - Schedules
+  - Transit
+  properties:
+  - type: GTFS
+    name: GTFS Schedule — Europe
+    url: https://gtfs.gis.flix.tech/gtfs_generic_eu.zip
+  - type: GTFS
+    name: GTFS Schedule — United States
+    url: https://gtfs.gis.flix.tech/gtfs_generic_us.zip
+  - type: GTFS
+    name: GTFS Schedule — Great Britain
+    url: https://gtfs.gis.flix.tech/gtfs_generic_gb.zip
 common:
+- type: DomainSecurity
+  url: security/flixbus-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/flixbus-vulnerability-disclosure.yml
+- type: SecurityTxt
+  url: well-known/flixbus-security.txt
+- type: WellKnown
+  url: well-known/flixbus-well-known.yml
+- type: Authentication
+  url: authentication/flixbus-authentication.yml
+- type: Conformance
+  url: conformance/flixbus-conformance.yml
+- type: Lifecycle
+  url: lifecycle/flixbus-lifecycle.yml
+- type: Packages
+  url: packages/flixbus-packages.yml
+- type: LLMsTxt
+  url: llms/flixbus-llms.txt
 - type: Website
-  url: https://www.hiive.com/securities/flixbus-stock
+  url: https://global.flixbus.com/
+- type: DeveloperPortal
+  url: https://developer.api.flixbus.com/
+- type: Documentation
+  url: https://developer.api.flixbus.com/
+- type: SignUp
+  url: https://global.flixbus.com/company/partners/affiliate-partners
+- type: Support
+  url: https://help.flixbus.com/
+- type: Blog
+  url: https://corporate.flix.com/newsroom/
+- type: GitHubOrganization
+  url: https://github.com/flix-tech
+- type: TermsOfService
+  url: https://global.flixbus.com/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://global.flixbus.com/privacy-policy
+- type: Security
+  url: https://global.flixbus.com/responsible-disclosure
