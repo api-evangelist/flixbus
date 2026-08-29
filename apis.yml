@@ -15,6 +15,17 @@ description: 'FlixBus is the long-distance coach brand of Flix SE (formerly Flix
   from gtfs.gis.flix.tech, refreshed regularly and licensed ODbL-1.0 through national
   open-data portals.'
 url: https://raw.githubusercontent.com/api-evangelist/flixbus/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://cdn-cf.cms.flixbus.com/drupal-assets/ogimage/flixbus.png
 x-type: company
 x-source: harvest:secondary-market
