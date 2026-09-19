@@ -102,6 +102,11 @@ apis:
   tags:
   - GTFS
   - Open Data
+  - Schedule
+  - Transit
+  tags_raw:
+  - GTFS
+  - Open Data
   - Schedules
   - Transit
   properties:
