@@ -64,5 +64,94 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-FlixBus is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.hiive.com/securities/flixbus-stock
+FlixBus is the long-distance coach brand of Flix SE (formerly FlixMobility), a Munich-headquartered mobility provider that also operates FlixTrain in Europe and Greyhound in North America. Flix runs an asset-light model: it owns the brand, network planning, pricing, distribution and technology while regional bus partners operate the vehicles. Its technology surface is split in two. A partner-facing Flix API is published through the Flix Developer Portal at developer.api.flixbus.com — a Redocly-based catalogue of API references, getting-started guides, changelogs and downloadable Postman collections — but the portal is gated behind Microsoft Entra ID (Azure AD) sign-in and the underlying gateway at global.api.flixbus.com rejects anonymous requests, so no machine-readable OpenAPI is reachable without a distribution-partner agreement (requested via online-distribution@flixbus.com). Publicly and anonymously, Flix does publish schedule data as first-party GTFS Schedule feeds for Europe, the United States and Great Britain from gtfs.gis.flix.tech, refreshed regularly and licensed ODbL-1.0 through national open-data portals.
+
+**Areas:** Company · Transportation · Travel · Mobility · Bus · Rail · Ticketing · GTFS · Open Data · Distribution
+
+## FlixBus on APIs.io
+
+Everything profiled for FlixBus is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/flixbus/](https://apis.io/providers/flixbus/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [Flix API](https://apis.io/apis/flixbus/flix-api/) — The partner-facing Flix API, published through the Flix Developer Portal. Documentation covers API references, getting-started guides, changelogs and…
+- [Flix GTFS Schedule Feeds](https://apis.io/apis/flixbus/flix-gtfs-schedule-feeds/) — First-party GTFS Schedule feeds published by FlixMobility Tech GmbH covering the FlixBus and FlixTrain networks. Three anonymous, unauthenticated regional…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Flixbus Authentication](https://apis.io/security/flixbus/flixbus-authentication/)
+- [Flixbus Domain Security](https://apis.io/security/flixbus/flixbus-domain-security/)
+- [Flixbus Vulnerability Disclosure](https://apis.io/security/flixbus/flixbus-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://global.flixbus.com/)
+- [Documentation](https://developer.api.flixbus.com/)
+- [Sign up](https://global.flixbus.com/company/partners/affiliate-partners)
+- [Support](https://help.flixbus.com/)
+- [Blog](https://corporate.flix.com/newsroom/)
+- [Security](https://global.flixbus.com/responsible-disclosure)
+- [Terms of service](https://global.flixbus.com/terms-and-conditions)
+- [Privacy policy](https://global.flixbus.com/privacy-policy)
+- [GitHub](https://github.com/flix-tech)
+
+## API Evangelist rating
+
+**Kin Score 23.7** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 34.2 |
+
+**Agent readiness 13.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+
+**Regulatory alignment 30.4** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/flixbus/](https://apis.io/providers/flixbus/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for FlixBus: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/flixbus/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
